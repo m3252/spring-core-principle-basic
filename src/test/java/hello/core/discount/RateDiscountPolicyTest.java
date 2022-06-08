@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RateDiscountPolicyTest {
 
@@ -17,7 +16,7 @@ class RateDiscountPolicyTest {
     void vip_o() {
         Member member = new Member(1L, "vip", Grade.VIP);
 
-        int discount = discountPolicy.discount(member, 1000);
+        int discount = discountPolicy.discount(member, 10000);
 
         assertThat(discount).isEqualTo(1000);
     }
