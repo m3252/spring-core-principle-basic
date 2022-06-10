@@ -1,7 +1,7 @@
 package hello.core;
 
 import hello.core.discount.DiscountPolicy;
-import hello.core.discount.FixDiscountPolicy;
+import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
@@ -9,7 +9,8 @@ import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
 
-//TODO spring 의 DI 역할을 대신 해주는 느낌인데..
+// TODO AppConfig 로 인해서 구성 영역(공연 기획자)과 사용 영역(연기자)의 영역이 분리됐다.
+// 사용 영역의 OCP 와 DIP 를 지켰다.
 public class AppConfig {
 
     // 무슨 일을 하는지 잘 드러나지 않는다.
@@ -31,7 +32,7 @@ public class AppConfig {
     }
 
     private DiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
     }
 
     public OrderService orderService() {
