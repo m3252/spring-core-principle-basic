@@ -30,4 +30,9 @@ public class OrderServiceImpl implements OrderService{
                 discountPrice
         );
     }
+
+    // TODO : 테스트 옹도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
