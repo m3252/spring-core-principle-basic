@@ -7,16 +7,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
+    //    @Autowired
+    private MemberRepository memberRepository;
 
-    @Autowired
+    //    @Autowired
+    private DiscountPolicy discountPolicy;
+
+    //    @Autowired(required = false)
+    // @Autowired 디폴트 속성이라 적지 않아도 된다.
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        System.out.println("생성자");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+
+    @Autowired
+    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+//
+//    @Autowired
+//    public void setMemberRepository(MemberRepository memberRepository) {
+//        System.out.println("OrderServiceImpl.setMemberRepository");
+//        this.memberRepository = memberRepository;
+//    }
+//
+//    @Autowired
+//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+//        System.out.println("OrderServiceImpl.setDiscountPolicy");
+//        this.discountPolicy = discountPolicy;
+//    }
+
 
     // DIP 위반! 추상화와 구체화 모두 의존시킴
     //private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
