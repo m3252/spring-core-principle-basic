@@ -30,7 +30,7 @@ public class ComponentFilterAppConfigTest {
             includeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class),
             excludeFilters = {
                     @Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class),
-                    @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = BeanA.class) // 빈을 바로 할당한다.
+                    // @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = BeanA.class) // 빈을 바로 할당한다.
             }
     )
     static class ComponentFilterAppConfig {
