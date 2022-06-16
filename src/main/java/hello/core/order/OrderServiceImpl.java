@@ -4,10 +4,11 @@ import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
     //    @Autowired
@@ -16,13 +17,16 @@ public class OrderServiceImpl implements OrderService {
     //    @Autowired
     private final DiscountPolicy discountPolicy;
 
+//    @Autowired
+//    private DiscountPolicy rateDiscountPolicy;
+
     //    @Autowired(required = false)
-    // @Autowired 디폴트 속성이라 적지 않아도 된다.
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//        System.out.println("생성자");
-//        this.memberRepository = memberRepository;
-//        this.discountPolicy = discountPolicy;
-//    }
+    @Autowired //디폴트 속성이라 적지 않아도 된다.
+    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("fixDiscountPolicy") DiscountPolicy discountPolicy) {
+        System.out.println("생성자");
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
 //    @Autowired
 //    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
