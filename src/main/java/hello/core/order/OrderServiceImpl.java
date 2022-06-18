@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
@@ -22,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
 
     //    @Autowired(required = false)
     @Autowired //디폴트 속성이라 적지 않아도 된다.
-    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("fixDiscountPolicy") DiscountPolicy discountPolicy) {
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         System.out.println("생성자");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
